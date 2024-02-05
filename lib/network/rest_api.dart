@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:tokenapp/model/dashboard_response.dart';
 import 'package:tokenapp/model/login_model.dart';
+import 'package:tokenapp/model/token_model.dart';
 import 'package:tokenapp/model/tokens_response.dart';
 import 'package:tokenapp/network/network_utils.dart';
 import 'package:tokenapp/main.dart';
@@ -31,6 +32,11 @@ Future<BaseResponseModel> forgotPassword(Map request) async {
   return BaseResponseModel.fromJson(await handleResponse(
       await buildHttpResponse('forgot-password',
           request: request, method: HttpMethodType.POST)));
+}
+
+Future<Token> callnext(Map request) async {
+  return Token.fromJson(await handleResponse(await buildHttpResponse('callnext',
+      request: request, method: HttpMethodType.POST)));
 }
 
 Future<DashboardResponse> dashboardData() async {
