@@ -1,18 +1,18 @@
-class Token {
+class QueueModel {
   int? id;
   int? serviceId;
   String? letter;
   int? number;
   int? called;
 
-  Token({this.id, this.serviceId, this.number, this.called});
+  QueueModel({this.id, this.serviceId, this.number, this.called});
 
-  Token.fromJson(Map<String, dynamic> json) {
+  QueueModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     serviceId = json['service-id'];
-    number = json['token_number'];
+    number = json['number'];
     called = json['called'];
-    letter = json['token_letter'];
+    letter = json['letter'];
   }
 
   Map<String, dynamic> toJson() {
@@ -20,8 +20,7 @@ class Token {
     if (id != null) data['id'] = id;
     if (serviceId != null) data['service_id'] = serviceId;
     if (called != null) data['called'] = called;
-    if (letter != null) data['token_letter'] = letter;
-    if (number != null) data['token_number'] = number;
+    if (letter != null) data['letter'] = letter;
     return data;
   }
 }

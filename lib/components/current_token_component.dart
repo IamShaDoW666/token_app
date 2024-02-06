@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tokenapp/main.dart';
 import 'package:tokenapp/model/tokens_response.dart';
-import 'package:tokenapp/utils/configs.dart';
-import 'package:tokenapp/utils/images.dart';
 import 'package:tokenapp/utils/constant.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:tokenapp/model/dashboard_response.dart';
 
 class TodayCashComponent extends StatelessWidget {
   final TokensResponse snap;
@@ -30,15 +26,26 @@ class TodayCashComponent extends StatelessWidget {
               size: 100,
               color: context.primaryColor,
             ),
-            if (snap.tokensForCall!.isNotEmpty)
-              Column(
-                children: List.generate(
-                    snap.tokensForCall!.length,
-                    (index) =>
-                        Text(snap.tokensForCall![index].number.toString())),
+            if (snap.calledTokens!.isNotEmpty)
+              Text(
+                '${snap.calledTokens![0].letter} - ${snap.calledTokens![0].number}',
+                style: const TextStyle(fontSize: 50),
               )
-
-            // PriceWidget(price: todayCashAmount, color: appStore.isDarkMode ? Colors.white : context.primaryColor),
+            else
+              const Text(
+                'NIL',
+                style: TextStyle(fontSize: 50),
+              ),
+            Column(
+              children: [
+                const Text("Pending", style: TextStyle(fontSize: 18))
+                    .paddingAll(12),
+                ...List.generate(
+                    snap.tokensForCall!.length,
+                    (index) => Text(
+                        '${snap.tokensForCall![index].letter} - ${snap.tokensForCall![index].number}'))
+              ],
+            )
           ],
         ),
       ),

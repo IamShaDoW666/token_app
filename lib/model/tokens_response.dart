@@ -1,12 +1,12 @@
 import 'package:tokenapp/model/counter_model.dart';
+import 'package:tokenapp/model/queue_model.dart';
 import 'package:tokenapp/model/token_model.dart';
-
 import 'service_model.dart';
 
 class TokensResponse {
   Service? service;
   Counter? counter;
-  List<Token>? tokensForCall;
+  List<QueueModel>? tokensForCall;
   List<Token>? calledTokens;
   TokensResponse(
       {this.service, this.counter, this.calledTokens, this.tokensForCall});
@@ -18,7 +18,7 @@ class TokensResponse {
         json['counter'] != null ? Counter.fromJson(json['counter']) : null;
     tokensForCall = json['tokens_for_call'] != null
         ? (json['tokens_for_call'] as List)
-            .map((i) => Token.fromJson(i))
+            .map((i) => QueueModel.fromJson(i))
             .toList()
         : null;
     calledTokens = json['called_tokens'] != null

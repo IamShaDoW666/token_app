@@ -3,13 +3,12 @@ import 'dart:async';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:tokenapp/model/dashboard_response.dart';
 import 'package:tokenapp/model/login_model.dart';
-import 'package:tokenapp/model/token_model.dart';
+import 'package:tokenapp/model/call_token.dart';
+import 'package:tokenapp/model/no_show.dart';
 import 'package:tokenapp/model/tokens_response.dart';
 import 'package:tokenapp/network/network_utils.dart';
 import 'package:tokenapp/main.dart';
-import 'package:tokenapp/model/user_data_model.dart';
 import 'package:tokenapp/model/base_response_model.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 
 Future<LoginResponse> createUser(Map request) async {
   return LoginResponse.fromJson(await (handleResponse(await buildHttpResponse(
@@ -34,9 +33,30 @@ Future<BaseResponseModel> forgotPassword(Map request) async {
           request: request, method: HttpMethodType.POST)));
 }
 
-Future<Token> callnext(Map request) async {
-  return Token.fromJson(await handleResponse(await buildHttpResponse('callnext',
-      request: request, method: HttpMethodType.POST)));
+Future<CallToken> callnext(Map request) async {
+  CallToken data = CallToken.fromJson(await handleResponse(
+      await buildHttpResponse('callnext',
+          request: request, method: HttpMethodType.POST)));
+  appStore.setLoading(false);
+  return data;
+}
+
+Future<NoShow> noShowApiToken(Map request) async {
+  NoShow data = NoShow.fromJson(await handleResponse(await buildHttpResponse(
+      'call/no-show',
+      request: request,
+      method: HttpMethodType.POST)));
+  appStore.setLoading(false);
+  return data;
+}
+
+Future<NoShow> serveApiToken(Map request) async {
+  NoShow data = NoShow.fromJson(await handleResponse(await buildHttpResponse(
+      'serve-token',
+      request: request,
+      method: HttpMethodType.POST)));
+  appStore.setLoading(false);
+  return data;
 }
 
 Future<DashboardResponse> dashboardData() async {

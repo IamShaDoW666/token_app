@@ -63,7 +63,8 @@ class ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         DateTime now = DateTime.now();
 
         if (currentBackPressTime == null ||
-            now.difference(currentBackPressTime!) > Duration(seconds: 2)) {
+            now.difference(currentBackPressTime!) >
+                const Duration(seconds: 2)) {
           currentBackPressTime = now;
           toast("hi");
           return Future.value(false);

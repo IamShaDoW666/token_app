@@ -23,6 +23,7 @@ class _ProviderHomeFragmentState extends State<ProviderHomeFragment> {
 
   int currentIndex = 0;
   late Future<TokensResponse> future;
+
   @override
   void initState() {
     super.initState();
@@ -66,8 +67,9 @@ class _ProviderHomeFragmentState extends State<ProviderHomeFragment> {
                   fadeInConfiguration: FadeInConfiguration(duration: 2.seconds),
                   children: [
                     TodayCashComponent(snap: snap.data!),
+                    // TodayCashComponent(snap: snap.data!),
                     TotalComponent(snap: snap.data!),
-                    // Text(snap.data!.today.toString()),
+                    // Text(snap.data!.token_letter.toString()),
                     // Text(snap.data!.yesterday.toString()),
                   ],
                   onSwipeRefresh: () async {
