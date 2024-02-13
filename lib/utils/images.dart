@@ -9,3 +9,5 @@ const total_booking = 'assets/icons/ic_total_booking.png';
 const fill_ticket = 'assets/icons/ic_fill_ticket.png';
 const total_services = 'assets/icons/ic_total_services.png';
 const un_fill_wallet = 'assets/icons/ic_un_fill_wallet.png';
+const ic_notification = 'assets/icons/ic_notification.png';
+const ic_calling = 'assets/icons/ic_calling.png';

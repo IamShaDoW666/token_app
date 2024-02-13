@@ -1,9 +1,8 @@
 import 'dart:async';
-
 import 'package:nb_utils/nb_utils.dart';
 import 'package:tokenapp/model/dashboard_response.dart';
 import 'package:tokenapp/model/login_model.dart';
-import 'package:tokenapp/model/call_token.dart';
+import 'package:tokenapp/model/call_model.dart';
 import 'package:tokenapp/model/no_show.dart';
 import 'package:tokenapp/model/tokens_response.dart';
 import 'package:tokenapp/network/network_utils.dart';
@@ -33,8 +32,8 @@ Future<BaseResponseModel> forgotPassword(Map request) async {
           request: request, method: HttpMethodType.POST)));
 }
 
-Future<CallToken> callnext(Map request) async {
-  CallToken data = CallToken.fromJson(await handleResponse(
+Future<CallModel> callnext(Map request) async {
+  CallModel data = CallModel.fromJson(await handleResponse(
       await buildHttpResponse('callnext',
           request: request, method: HttpMethodType.POST)));
   appStore.setLoading(false);
@@ -95,4 +94,12 @@ Future<TokensResponse> getTokens(Map request) async {
     completer.completeError(e);
   }
   return completer.future;
+}
+
+Future<CallModel> recallToken(Map request) async {
+  CallModel data = CallModel.fromJson(await handleResponse(
+      await buildHttpResponse('call/recall-token',
+          request: request, method: HttpMethodType.POST)));
+  appStore.setLoading(false);
+  return data;
 }

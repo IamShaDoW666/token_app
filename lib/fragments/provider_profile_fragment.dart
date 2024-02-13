@@ -4,14 +4,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tokenapp/main.dart';
 import 'package:tokenapp/screens/auth/sign_in_screen.dart';
 import 'package:tokenapp/components/cached_image_widget.dart';
-import 'package:tokenapp/model/dashboard_response.dart';
 import 'package:tokenapp/model/user_data_model.dart';
-import 'package:tokenapp/network/rest_api.dart';
-import 'package:tokenapp/utils/colors.dart';
-import 'package:tokenapp/utils/common.dart';
 import 'package:tokenapp/utils/configs.dart';
-import 'package:tokenapp/utils/constant.dart';
-
 import 'package:nb_utils/nb_utils.dart';
 
 class ProviderProfileFragment extends StatefulWidget {
@@ -52,7 +46,7 @@ class ProviderProfileFragmentState extends State<ProviderProfileFragment> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    24.height,
+                    32.height,
                     Stack(alignment: Alignment.bottomRight, children: [
                       Container(
                           decoration: boxDecorationDefault(
@@ -76,7 +70,7 @@ class ProviderProfileFragmentState extends State<ProviderProfileFragment> {
                             ),
                           ))
                     ]),
-                    16.height,
+                    32.height,
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -90,11 +84,11 @@ class ProviderProfileFragmentState extends State<ProviderProfileFragment> {
                     ),
                   ],
                 ).center().visible(appStore.isLoggedIn),
-                16.height,
+                72.height,
                 Center(
                   child: AppButton(
                     height: 40,
-                    color: primaryColor,
+                    color: Colors.amber,
                     text: "Log Out",
                     width: context.width() - 42,
                     onTap: () {

@@ -25,15 +25,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: appStore.isLoggedIn
-          ? const ProviderDashboardScreen()
-          : SignInScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'DigiImpact Token System',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+          useMaterial3: true,
+        ),
+        home: appStore.isLoggedIn
+            ? const ProviderDashboardScreen()
+            : SignInScreen());
   }
 }

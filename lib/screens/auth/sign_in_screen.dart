@@ -61,10 +61,10 @@ class _SignInScreenState extends State<SignInScreen> {
     return Column(
       children: [
         32.height,
-        Text("Token", style: boldTextStyle(size: 18)).center(),
+        Text("Token System", style: boldTextStyle(size: 18)).center(),
         16.height,
         Text(
-          "Welcome",
+          "Developed By Digiimpact",
           style: secondaryTextStyle(size: 14),
           textAlign: TextAlign.center,
         ).paddingSymmetric(horizontal: 32).center(),
@@ -167,7 +167,7 @@ class _SignInScreenState extends State<SignInScreen> {
         AppButton(
           text: "Sign In",
           height: 40,
-          color: primaryColor,
+          color: Colors.amber,
           textStyle: boldTextStyle(color: white),
           width: context.width() - context.navigationBarHeight,
           onTap: () {

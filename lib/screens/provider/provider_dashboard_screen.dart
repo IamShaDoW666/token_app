@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tokenapp/utils/configs.dart';
 import 'package:tokenapp/utils/constant.dart';
 import 'package:tokenapp/utils/colors.dart';
 import 'package:tokenapp/utils/images.dart';
@@ -7,6 +6,7 @@ import 'package:nb_utils/nb_utils.dart';
 import 'package:tokenapp/utils/string_extensions.dart';
 import 'package:tokenapp/fragments/provider_home_fragment.dart';
 import 'package:tokenapp/fragments/provider_profile_fragment.dart';
+import 'package:tokenapp/fragments/token_list_fragment.dart';
 
 class ProviderDashboardScreen extends StatefulWidget {
   final int? index;
@@ -26,8 +26,6 @@ class ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
   List<Widget> fragmentList = [
     const ProviderHomeFragment(),
     const ProviderProfileFragment(),
-    // BookingFragment(),
-    // ProviderPaymentFragment(),
   ];
 
   List<String> screenName = [];
@@ -66,7 +64,7 @@ class ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
             now.difference(currentBackPressTime!) >
                 const Duration(seconds: 2)) {
           currentBackPressTime = now;
-          toast("hi");
+          // toast("hi");
           return Future.value(false);
         }
         return Future.value(true);
@@ -74,10 +72,22 @@ class ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
       child: Scaffold(
         appBar: appBarWidget(
           ['Home', 'Profile'][currentIndex],
-          color: primaryColor,
-          textColor: Colors.white,
+          color: Colors.amber,
+          textColor: Colors.black,
           showBack: false,
-          actions: [],
+          actions: [
+            IconButton(
+              icon: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  ic_show.iconImage(color: Colors.black, size: 34),
+                ],
+              ),
+              onPressed: () async {
+                const TokenListFragment().launch(context);
+              },
+            ),
+          ],
         ),
         body: fragmentList[currentIndex],
         bottomNavigationBar: Blur(

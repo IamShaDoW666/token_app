@@ -22,30 +22,35 @@ class TodayCashComponent extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SpinKitDoubleBounce(
-              size: 100,
+            SpinKitWave(
+              size: 32,
               color: context.primaryColor,
             ),
             if (snap.calledTokens!.isNotEmpty)
-              Text(
-                '${snap.calledTokens![0].letter} - ${snap.calledTokens![0].number}',
-                style: const TextStyle(fontSize: 50),
+              Column(
+                children: [
+                  Text(
+                    '${snap.calledTokens![0].letter} - ${snap.calledTokens![0].number}',
+                    style: const TextStyle(fontSize: 50),
+                  ),
+                  Text(snap.calledTokens![0].callStatus.validate())
+                ],
               )
             else
               const Text(
                 'NIL',
                 style: TextStyle(fontSize: 50),
               ),
-            Column(
-              children: [
-                const Text("Pending", style: TextStyle(fontSize: 18))
-                    .paddingAll(12),
-                ...List.generate(
-                    snap.tokensForCall!.length,
-                    (index) => Text(
-                        '${snap.tokensForCall![index].letter} - ${snap.tokensForCall![index].number}'))
-              ],
-            )
+            // Column(
+            //   children: [
+            //     const Text("Pending", style: TextStyle(fontSize: 18))
+            //         .paddingAll(12),
+            //     ...List.generate(
+            //         snap.tokensForCall!.length,
+            //         (index) => Text(
+            //             '${snap.tokensForCall![index].letter} - ${snap.tokensForCall![index].number}'))
+            //   ],
+            // )
           ],
         ),
       ),
