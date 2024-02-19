@@ -14,6 +14,10 @@ abstract class _AppStore with Store {
   @observable
   int? userId = -1;
   @observable
+  int? serviceId = -1;
+  @observable
+  int? counterId = -1;
+  @observable
   bool isLoading = false;
   @observable
   String loginType = '';
@@ -73,5 +77,17 @@ abstract class _AppStore with Store {
   Future<void> setUserName(String val, {bool isInitializing = false}) async {
     userName = val;
     if (!isInitializing) await setValue(USERNAME, val);
+  }
+
+  @action
+  Future<void> setServiceId(int val) async {
+    serviceId = val;
+    await setValue(SERVICE_ID, val);
+  }
+
+  @action
+  Future<void> setCounterId(int val) async {
+    counterId = val;
+    await setValue(COUNTER_ID, val);
   }
 }

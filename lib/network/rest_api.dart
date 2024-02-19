@@ -4,6 +4,7 @@ import 'package:tokenapp/model/dashboard_response.dart';
 import 'package:tokenapp/model/login_model.dart';
 import 'package:tokenapp/model/call_model.dart';
 import 'package:tokenapp/model/no_show.dart';
+import 'package:tokenapp/model/responses/service_and_counter_response.dart';
 import 'package:tokenapp/model/tokens_response.dart';
 import 'package:tokenapp/network/network_utils.dart';
 import 'package:tokenapp/main.dart';
@@ -102,4 +103,21 @@ Future<CallModel> recallToken(Map request) async {
           request: request, method: HttpMethodType.POST)));
   appStore.setLoading(false);
   return data;
+}
+
+Future<ServiceAndCounterResponse> getServicesAndCounters() async {
+  final completer = Completer<ServiceAndCounterResponse>();
+  try {
+    final data = ServiceAndCounterResponse.fromJson(await handleResponse(
+        await buildHttpResponse('services-counters',
+            method: HttpMethodType.GET)));
+
+    completer.complete(data);
+    cachedServicesCounterResponse = data;
+    appStore.setLoading(false);
+  } catch (e) {
+    appStore.setLoading(false);
+    completer.completeError(e);
+  }
+  return completer.future;
 }

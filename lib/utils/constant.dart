@@ -5,6 +5,8 @@ import 'package:nb_utils/nb_utils.dart';
 var appPackageName = isAndroid ? 'com.token.doctorbooking' : 'com.token.user';
 const LIVESTREAM_TOKEN = 'tokenStream';
 const UID = 'UID';
+const SERVICE_ID = 'serviceId';
+const COUNTER_ID = 'counterId';
 const USER_EMAIL = 'USER_EMAIL';
 const USER_PASSWORD = 'USER_PASSWORD';
 const TOKEN = 'TOKEN';

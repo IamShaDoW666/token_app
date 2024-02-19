@@ -40,6 +40,38 @@ mixin _$AppStore on _AppStore, Store {
     });
   }
 
+  late final _$serviceIdAtom =
+      Atom(name: '_AppStore.serviceId', context: context);
+
+  @override
+  int? get serviceId {
+    _$serviceIdAtom.reportRead();
+    return super.serviceId;
+  }
+
+  @override
+  set serviceId(int? value) {
+    _$serviceIdAtom.reportWrite(value, super.serviceId, () {
+      super.serviceId = value;
+    });
+  }
+
+  late final _$counterIdAtom =
+      Atom(name: '_AppStore.counterId', context: context);
+
+  @override
+  int? get counterId {
+    _$counterIdAtom.reportRead();
+    return super.counterId;
+  }
+
+  @override
+  set counterId(int? value) {
+    _$counterIdAtom.reportWrite(value, super.counterId, () {
+      super.counterId = value;
+    });
+  }
+
   late final _$isLoadingAtom =
       Atom(name: '_AppStore.isLoading', context: context);
 
@@ -213,6 +245,22 @@ mixin _$AppStore on _AppStore, Store {
         .run(() => super.setUserName(val, isInitializing: isInitializing));
   }
 
+  late final _$setServiceIdAsyncAction =
+      AsyncAction('_AppStore.setServiceId', context: context);
+
+  @override
+  Future<void> setServiceId(int val) {
+    return _$setServiceIdAsyncAction.run(() => super.setServiceId(val));
+  }
+
+  late final _$setCounterIdAsyncAction =
+      AsyncAction('_AppStore.setCounterId', context: context);
+
+  @override
+  Future<void> setCounterId(int val) {
+    return _$setCounterIdAsyncAction.run(() => super.setCounterId(val));
+  }
+
   late final _$_AppStoreActionController =
       ActionController(name: '_AppStore', context: context);
 
@@ -232,6 +280,8 @@ mixin _$AppStore on _AppStore, Store {
     return '''
 isLoggedIn: ${isLoggedIn},
 userId: ${userId},
+serviceId: ${serviceId},
+counterId: ${counterId},
 isLoading: ${isLoading},
 loginType: ${loginType},
 userEmail: ${userEmail},

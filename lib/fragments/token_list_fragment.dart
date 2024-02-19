@@ -28,7 +28,10 @@ class NotificationScreenState extends State<TokenListFragment> {
   }
 
   void init() {
-    future = getTokens({"service_id": 1, "counter_id": 1});
+    future = getTokens({
+      "service_id": appStore.serviceId.toString(),
+      "counter_id": appStore.counterId.toString()
+    });
   }
 
   Widget listIterate(List<Token> list) {

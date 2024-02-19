@@ -52,7 +52,7 @@ class TokenWidget extends StatelessWidget {
           ).expand(),
           // Text(data.id.toString(), style: secondaryTextStyle(size: 10)
           // ),
-          if (data.callStatus != 'pending')
+          if (data.callStatus != 'pending' && data.callStatus != 'called')
             IconButton(
               disabledColor: Colors.red,
               icon: ic_calling.iconImage(

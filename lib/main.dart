@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:tokenapp/model/dashboard_response.dart';
+import 'package:tokenapp/model/responses/service_and_counter_response.dart';
 import 'package:tokenapp/model/tokens_response.dart';
 import 'package:tokenapp/screens/auth/sign_in_screen.dart';
 import 'package:tokenapp/screens/provider/provider_dashboard_screen.dart';
@@ -9,6 +10,7 @@ import 'package:tokenapp/utils/constant.dart';
 
 AppStore appStore = AppStore();
 DashboardResponse? cachedProviderDashboardResponse;
+ServiceAndCounterResponse? cachedServicesCounterResponse;
 TokensResponse? cachedTokenResponse;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
